@@ -3,7 +3,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { Divider, Grid, Typography, Container } from "@mui/material";
 import { Box } from "@mui/system";
 import { useSelector } from "react-redux";
-import lappy from "../../images/lappy.jpg";
+import lappy from "../images/lappy.jpg";
 import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles(() => ({
