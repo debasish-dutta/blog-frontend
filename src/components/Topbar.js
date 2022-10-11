@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import { Container } from "@mui/material";
 import Switch from "@mui/material/Switch";
 import AppBar from "@mui/material/AppBar";
@@ -11,9 +13,6 @@ import Button from "@mui/material/Button";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import AutoStoriesIcon from "@mui/icons-material/AutoStories";
 import { styled } from "@mui/material/styles";
-import TwitterIcon from "@mui/icons-material/Twitter";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import GitHubIcon from "@mui/icons-material/GitHub";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 import Drawer from "@mui/material/Drawer";
@@ -29,15 +28,22 @@ import ContactPageIcon from "@mui/icons-material/ContactPage";
 import PersonIcon from "@mui/icons-material/Person";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
+import { makeStyles } from "@mui/styles";
 
 const drawerWidth = 240;
 
 const page = [
-  { id: "1", title: "Blog", icon: <BookIcon /> },
-  { id: "2", title: "PodCast", icon: <PodcastsIcon /> },
-  { id: "3", title: "About me", icon: <PersonIcon /> },
-  { id: "4", title: "Contact Us", icon: <ContactPageIcon /> }
+  { id: "1", title: "Blog", icon: <BookIcon />, route: "/blog" },
+  { id: "2", title: "Podcast", icon: <PodcastsIcon />, route: "/podcast" },
+  { id: "3", title: "About Me", icon: <PersonIcon />, route: "/about" },
+  { id: "4", title: "Contact Me", icon: <ContactPageIcon />, route: "/contact" }
 ];
+
+const useStyles = makeStyles(() => ({
+  link: {
+    textDecoration: "none",
+  }
+}));
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 62,
@@ -51,7 +57,7 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
       color: "#fff",
       transform: "translateX(22px)",
       "& .MuiSwitch-thumb:before": {
-        backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 20 20"><path fill="${encodeURIComponent(
+        backgroundImage: `url('data:image/svg+xml;utf8,<svg height="20" width="20" viewBox="0 0 20 20"><path fill="${encodeURIComponent(
           "#fff"
         )}" d="M4.2 2.5l-.7 1.8-1.8.7 1.8.7.7 1.8.6-1.8L6.7 5l-1.9-.7-.6-1.8zm15 8.3a6.7 6.7 0 11-6.6-6.6 5.8 5.8 0 006.6 6.6z"/></svg>')`
       },
@@ -74,7 +80,7 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
       top: 0,
       backgroundRepeat: "no-repeat",
       backgroundPosition: "center",
-      backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 20 20"><path fill="${encodeURIComponent(
+      backgroundImage: `url('data:image/svg+xml;utf8,<svg height="20" width="20" viewBox="0 0 20 20"><path fill="${encodeURIComponent(
         "#fff"
       )}" d="M9.305 1.667V3.75h1.389V1.667h-1.39zm-4.707 1.95l-.982.982L5.09 6.072l.982-.982-1.473-1.473zm10.802 0L13.927 5.09l.982.982 1.473-1.473-.982-.982zM10 5.139a4.872 4.872 0 00-4.862 4.86A4.872 4.872 0 0010 14.862 4.872 4.872 0 0014.86 10 4.872 4.872 0 0010 5.139zm0 1.389A3.462 3.462 0 0113.471 10a3.462 3.462 0 01-3.473 3.472A3.462 3.462 0 016.527 10 3.462 3.462 0 0110 6.528zM1.665 9.305v1.39h2.083v-1.39H1.666zm14.583 0v1.39h2.084v-1.39h-2.084zM5.09 13.928L3.616 15.4l.982.982 1.473-1.473-.982-.982zm9.82 0l-.982.982 1.473 1.473.982-.982-1.473-1.473zM9.305 16.25v2.083h1.389V16.25h-1.39z"/></svg>')`
     }
@@ -87,6 +93,7 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 }));
 
 const Topbar = ({ darkMode, setDarkMode }) => {
+  const classes = useStyles();
   const darkTheme = createTheme({
     palette: {
       mode: darkMode ? "dark" : "light",
@@ -122,7 +129,7 @@ const Topbar = ({ darkMode, setDarkMode }) => {
       <List>
         {page.map((text) => (
           <ListItem key={text.id} disablePadding>
-            <ListItemButton>
+            <ListItemButton href={text.route}>
               <ListItemIcon>{text.icon}</ListItemIcon>
               <ListItemText primary={text.title} />
             </ListItemButton>
@@ -139,9 +146,9 @@ const Topbar = ({ darkMode, setDarkMode }) => {
             width: "100%"
           }}
         >
-          <TwitterIcon sx={{ mr: 2 }} />
+          {/* <TwitterIcon sx={{ mr: 2 }} />
           <InstagramIcon sx={{ mr: 2 }} />
-          <GitHubIcon />
+          <GitHubIcon /> */}
         </Box>
       </Toolbar>
     </div>
@@ -173,8 +180,10 @@ const Topbar = ({ darkMode, setDarkMode }) => {
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
               {page.map((page) => (
                 <Button
+                  className={classes.link}
                   key={page.id}
                   sx={{ my: 2, color: "inherit", display: "block" }}
+                  href={page.route}
                 >
                   {page.title}
                 </Button>
@@ -183,9 +192,9 @@ const Topbar = ({ darkMode, setDarkMode }) => {
             <Box
               sx={{ display: { xs: "none", md: "flex" }, alignItems: "center" }}
             >
-              <TwitterIcon sx={{ mr: 2 }} />
+              {/* <TwitterIcon sx={{ mr: 2 }} />
               <InstagramIcon sx={{ mr: 2 }} />
-              <GitHubIcon />
+              <GitHubIcon /> */}
               <IconButton
                 sx={{ ml: 1 }}
                 onClick={() => setDarkMode(!darkMode)}

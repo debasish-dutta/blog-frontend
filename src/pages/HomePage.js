@@ -6,6 +6,9 @@ import { useSelector } from "react-redux";
 import lappy from "../images/lappy.jpg";
 import { makeStyles } from "@mui/styles";
 
+import Topbar from "../components/Topbar";
+import Footer from "../components/Footer";
+
 const useStyles = makeStyles(() => ({
   invert: {
     background: "white",
@@ -34,6 +37,7 @@ const HomePage = ({ darkMode }) => {
   });
   return (
     <ThemeProvider theme={darkTheme}>
+      <Topbar darkMode={darkMode} />
       <Divider sx={{ display: { xs: "none", md: "flex" }, bgcolor: "gray" }} />
       <Box
         sx={{
@@ -95,6 +99,7 @@ const HomePage = ({ darkMode }) => {
           <Container maxWidth="1">Top Posts</Container>
         </Grid>
       </Grid>
+      <Footer darkMode={darkMode} />
     </ThemeProvider>
   );
 };
