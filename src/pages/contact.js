@@ -2,7 +2,6 @@ import React from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { Divider, Grid, Typography, Container } from "@mui/material";
 import { Box } from "@mui/system";
-import { useSelector } from "react-redux";
 import { makeStyles } from "@mui/styles";
 
 import Topbar from "../components/Topbar";
@@ -23,10 +22,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 const About = ({ darkMode }) => {
-  const posts = useSelector((state) => state.posts);
-  console.log({ posts });
-
-    const classes = useStyles();
+  const classes = useStyles();
   const darkTheme = createTheme({
     palette: {
       mode: darkMode ? "dark" : "light",
@@ -60,7 +56,6 @@ const About = ({ darkMode }) => {
           <Typography
             sx={{ fontFamily: "'Oswald', sans-serif", fontWeight: 200 }}
           >
-            {posts[0].content}
           </Typography>
         </Grid>
       </Grid>

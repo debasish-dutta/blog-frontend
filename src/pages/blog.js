@@ -1,16 +1,19 @@
 import React from "react";
+import { useEffect,useState } from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { Divider, Grid, Typography, Container } from "@mui/material";
 import { Box } from "@mui/system";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { makeStyles } from "@mui/styles";
 
 import Topbar from "../components/Topbar";
 import Footer from "../components/Footer";
 import Poly from "../components/Poly";
 import BlogCard from "../components/BlogCard";
+import { getBlogPosts } from "../redux/slice/BlogPostSlice";
 
 
+  
 const useStyles = makeStyles(() => ({
   invert: {
     background: "white",
@@ -25,10 +28,23 @@ const useStyles = makeStyles(() => ({
 }));
 
 const Blog = ({ darkMode }) => {
-  const posts = useSelector((state) => state.posts);
-  console.log({ posts });
+  const classes = useStyles();
+  // const [posts, setPost] = useState();
 
-    const classes = useStyles();
+  // useEffect(() => {
+  //   fetch(baseURL).then((response) => response.json())
+  //   .then((data) => console.log(data));
+  // }, []);
+
+  const posts = useSelector((state) => ({ ...state.posts }));
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getBlogPosts());
+  }, []);
+
+  console.log( posts );
+
+
   const darkTheme = createTheme({
     palette: {
       mode: darkMode ? "dark" : "light",
@@ -44,9 +60,20 @@ const Blog = ({ darkMode }) => {
       <Poly darkMode={darkMode} />
       <Divider sx={{ display: { xs: "none", md: "flex" }, bgcolor: "gray" }} />
       <Grid container className={"darkMode" ? classes.invert : classes.default}>
-        <BlogCard href="https://google.com"/>
-        <BlogCard/>
-        <BlogCard/>
+        {/* {posts.length === 0 && (
+          <Typography
+          sx={{
+            fontFamily: "'Oswald', sans-serif",
+            fontWeight: 700,
+            fontSize: "1.5rem"
+          }}
+        >
+          No Posts Found
+        </Typography>
+        )} */}
+        {posts.posts.blogs.map((item, index) => <BlogCard key={index} {...item} />)}
+        {/* {posts.posts.blogs.map((item, index) => console.log(item))} */}
+        {/* { console.log(posts.posts.blogs )} */}
       </Grid>
       <Footer darkMode={darkMode} />
     </ThemeProvider>

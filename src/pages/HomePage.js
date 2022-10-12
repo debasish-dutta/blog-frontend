@@ -25,8 +25,8 @@ const useStyles = makeStyles(() => ({
 }));
 
 const HomePage = ({ darkMode }) => {
-  const posts = useSelector((state) => state.posts);
-  console.log({ posts });
+  // const posts = useSelector((state) => state.posts);
+  // console.log({ posts });
 
   const classes = useStyles();
   const darkTheme = createTheme({

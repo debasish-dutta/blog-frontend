@@ -18,7 +18,7 @@ const posts =
         "__v": 0
     };
 
-const BlogCard = () => {
+const BlogCard = ({title, subtitle, content, image, tags, createdAt, _id}) => {
     return(
         <Grid
           item
@@ -28,7 +28,7 @@ const BlogCard = () => {
         >
           <img
             src={lappy}
-            alt={lappy}
+            alt={title}
             style={{
               width: "100%",
               height: "300px",
@@ -36,7 +36,7 @@ const BlogCard = () => {
               borderRadius: "5px"
             }}
           />
-          <Typography>{posts.createdAt}</Typography>
+          <Typography>{createdAt}</Typography>
           <Typography
             sx={{
               fontFamily: "'Oswald', sans-serif",
@@ -44,12 +44,15 @@ const BlogCard = () => {
               fontSize: "1.5rem"
             }}
           >
-            {posts.title}
+            {title}
           </Typography>
           <Typography
             sx={{ fontFamily: "'Oswald', sans-serif", fontWeight: 200 }}
           >
-            {posts.subtitle}
+            {subtitle}
+          </Typography>
+          <Typography>
+            {tags}
           </Typography>
         </Grid>
     );
