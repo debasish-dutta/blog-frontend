@@ -8,6 +8,8 @@ import { makeStyles } from "@mui/styles";
 import Topbar from "../components/Topbar";
 import Footer from "../components/Footer";
 import Poly from "../components/Poly";
+import BlogCard from "../components/BlogCard";
+
 
 const useStyles = makeStyles(() => ({
   invert: {
@@ -22,7 +24,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const About = ({ darkMode }) => {
+const Blog = ({ darkMode }) => {
   const posts = useSelector((state) => state.posts);
   console.log({ posts });
 
@@ -42,31 +44,13 @@ const About = ({ darkMode }) => {
       <Poly darkMode={darkMode} />
       <Divider sx={{ display: { xs: "none", md: "flex" }, bgcolor: "gray" }} />
       <Grid container className={"darkMode" ? classes.invert : classes.default}>
-        <Grid
-          item
-          xs={12}
-          md={6}
-          sx={{ pl: { md: 5 }, pt: { md: 5 }, p: { xs: 2 } }}
-        >
-          <Typography
-            sx={{
-              fontFamily: "'Oswald', sans-serif",
-              fontWeight: 700,
-              fontSize: "1.5rem"
-            }}
-          >
-            Contact Me
-          </Typography>
-          <Typography
-            sx={{ fontFamily: "'Oswald', sans-serif", fontWeight: 200 }}
-          >
-            {posts[0].content}
-          </Typography>
-        </Grid>
+        <BlogCard href="https://google.com"/>
+        <BlogCard/>
+        <BlogCard/>
       </Grid>
       <Footer darkMode={darkMode} />
     </ThemeProvider>
   );
 };
 
-export default About;
+export default Blog;

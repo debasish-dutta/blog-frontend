@@ -8,6 +8,8 @@ import { makeStyles } from "@mui/styles";
 
 import Topbar from "../components/Topbar";
 import Footer from "../components/Footer";
+import Poly from "../components/Poly";
+import BlogCard from "../components/BlogCard";
 
 const useStyles = makeStyles(() => ({
   invert: {
@@ -39,65 +41,15 @@ const HomePage = ({ darkMode }) => {
     <ThemeProvider theme={darkTheme}>
       <Topbar darkMode={darkMode} />
       <Divider sx={{ display: { xs: "none", md: "flex" }, bgcolor: "gray" }} />
-      <Box
-        sx={{
-          display: "flex",
-          width: "100%",
-          alignItems: "center",
-          justifyContent: "center",
-          bgcolor: "background.default",
-          color: "text.primary",
-          height: "30vh"
-        }}
-      >
-        <Grid>
-          <Typography
-            sx={{
-              fontFamily: "'Rubik Mono One', sans-serif",
-              fontSize: { xs: "2rem", md: "4rem" }
-            }}
-          >
-            The PodBlog
-          </Typography>
-        </Grid>
-      </Box>
+      <Poly darkMode={darkMode} />
       <Divider sx={{ display: { xs: "none", md: "flex" }, bgcolor: "gray" }} />
       <Grid container className={"darkMode" ? classes.invert : classes.default}>
-        <Grid
-          item
-          xs={12}
-          md={6}
-          sx={{ pl: { md: 5 }, pt: { md: 5 }, p: { xs: 2 } }}
-        >
-          <img
-            src={lappy}
-            alt={lappy}
-            style={{
-              width: "100%",
-              height: "300px",
-              objectFit: "cover",
-              borderRadius: "5px"
-            }}
-          />
-          <Typography>January 22, 2012</Typography>
-          <Typography
-            sx={{
-              fontFamily: "'Oswald', sans-serif",
-              fontWeight: 700,
-              fontSize: "1.5rem"
-            }}
-          >
-            {posts[0].title}
-          </Typography>
-          <Typography
-            sx={{ fontFamily: "'Oswald', sans-serif", fontWeight: 200 }}
-          >
-            {posts[0].content}
-          </Typography>
-        </Grid>
-        <Grid item md={6} xs={12}>
-          <Container maxWidth="1">Top Posts</Container>
-        </Grid>
+          <Container maxWidth="1">Top Blog Posts</Container>
+        <BlogCard/>
+        <BlogCard/>
+          <Container maxWidth="1">Top Podcasts</Container>
+        <BlogCard/>
+        <BlogCard/>
       </Grid>
       <Footer darkMode={darkMode} />
     </ThemeProvider>

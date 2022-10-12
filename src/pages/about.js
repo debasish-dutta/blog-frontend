@@ -7,6 +7,7 @@ import { makeStyles } from "@mui/styles";
 
 import Topbar from "../components/Topbar";
 import Footer from "../components/Footer";
+import Poly from "../components/Poly";
 
 const useStyles = makeStyles(() => ({
   invert: {
@@ -38,28 +39,7 @@ const About = ({ darkMode }) => {
     <ThemeProvider theme={darkTheme}>
       <Topbar darkMode={darkMode} />
       <Divider sx={{ display: { xs: "none", md: "flex" }, bgcolor: "gray" }} />
-      <Box
-        sx={{
-          display: "flex",
-          width: "100%",
-          alignItems: "center",
-          justifyContent: "center",
-          bgcolor: "background.default",
-          color: "text.primary",
-          height: "30vh"
-        }}
-      >
-        <Grid>
-          <Typography
-            sx={{
-              fontFamily: "'Rubik Mono One', sans-serif",
-              fontSize: { xs: "2rem", md: "4rem" }
-            }}
-          >
-            The PodBlog
-          </Typography>
-        </Grid>
-      </Box>
+      <Poly darkMode={darkMode} />
       <Divider sx={{ display: { xs: "none", md: "flex" }, bgcolor: "gray" }} />
       <Grid container className={"darkMode" ? classes.invert : classes.default}>
         <Grid
