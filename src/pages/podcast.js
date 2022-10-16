@@ -9,9 +9,8 @@ import { makeStyles } from "@mui/styles";
 import Topbar from "../components/Topbar";
 import Footer from "../components/Footer";
 import Poly from "../components/Poly";
-import BlogCard from "../components/BlogCard";
-import { getBlogPosts } from "../redux/slice/BlogPostSlice";
-
+import PodcastCard from "../components/PodcastCard";
+import { getPodcasts } from "../redux/slice/PodcastSlice";
 
   
 const useStyles = makeStyles(() => ({
@@ -27,7 +26,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const Blog = ({ darkMode }) => {
+const Podcast = ({ darkMode }) => {
   const classes = useStyles();
   // const [posts, setPost] = useState();
 
@@ -36,13 +35,13 @@ const Blog = ({ darkMode }) => {
   //   .then((data) => console.log(data));
   // }, []);
 
-  const blogs = useSelector((state) => (state.posts ));
+  const podcasts = useSelector((state) => (state.podcasts ));
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getBlogPosts());
+    dispatch(getPodcasts());
   }, []);
 
-  console.log( blogs );
+  console.log( podcasts );
 
 
   const darkTheme = createTheme({
@@ -60,24 +59,13 @@ const Blog = ({ darkMode }) => {
       <Poly darkMode={darkMode} />
       <Divider sx={{ display: { xs: "none", md: "flex" }, bgcolor: "gray" }} />
       <Grid container className={"darkMode" ? classes.invert : classes.default}>
-        {/* {posts.length === 0 && (
-          <Typography
-          sx={{
-            fontFamily: "'Oswald', sans-serif",
-            fontWeight: 700,
-            fontSize: "1.5rem"
-          }}
-        >
-          No Posts Found
-        </Typography>
-        )} */}
-        {blogs.posts.map((item) => <BlogCard {...item} />)}
-        {/* {posts.posts.blogs.map((item, index) => console.log(item))} */}
-        {/* { console.log(posts.blogs )} */}
+
+        {podcasts.podcasts.map((item) => <PodcastCard {...item} />)}
+
       </Grid>
       <Footer darkMode={darkMode} />
     </ThemeProvider>
   );
 };
 
-export default Blog;
+export default Podcast;

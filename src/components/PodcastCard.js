@@ -3,22 +3,23 @@ import { Box, Grid, Typography, ThemeProvider, createTheme } from "@mui/material
 
 import lappy from "../images/lappy.jpg";
 
-const posts =
-    {
-        "title": "new blog",
-        "subtitle": "13",
-        "content": "link 1",
-        "image": "qsc",
-        "tags": [
-            "JS",
-            "Spotify"
-        ],
-        "createdAt": "2022-10-10T",
-        "_id": "6343f45cd7a23850ee3d16bb",
-        "__v": 0
-    };
+const podcasts =
+{
+  "_id": "634be1288d28c48c5ba57702",
+  "title": "podcast ",
+  "subtitle": "post post",
+  "audio": "this is a new audio link",
+  "image": "qsc",
+  "tags": [
+      "Express",
+      "Podcast"
+  ],
+  "createdAt": "2022-10-16T10:47:04.078Z",
+  "slug": "podcast",
+  "__v": 0
+};
 
-const BlogCard = ({title, subtitle, content, image, tags, createdAt, _id}) => {
+const PodcastCard = ({title, subtitle, audio, image, tags, createdAt, _id}) => {
     return(
         <Grid
           item
@@ -57,4 +58,4 @@ const BlogCard = ({title, subtitle, content, image, tags, createdAt, _id}) => {
     );
 };
 
-export default BlogCard;
+export default PodcastCard;

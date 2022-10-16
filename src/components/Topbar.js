@@ -174,7 +174,7 @@ const Topbar = ({ darkMode, setDarkMode }) => {
             {/* <AutoStoriesIcon
               sx={{ display: { xs: "none", md: "flex" }, mr: 2 }}
             /> */}
-            <HomeIcon sx={{pr:1}}/>
+            <HomeIcon sx={{pr:1}} href= "/" />
             {/* <SvgIcon component={logoSvg} /> */}
             <Typography
               sx={{
@@ -184,10 +184,20 @@ const Topbar = ({ darkMode, setDarkMode }) => {
                 fontWeight: 700,
                 letterSpacing: ".3rem",
                 color: "inherit",
-                textDecoration: "none"
+                textDecoration: "none",
               }}
+              href= "/"
             >
-              The PodBlog
+              
+            <a sx={{
+                mr: 2,
+                display: { xs: "none", md: "flex" },
+                fontFamily: "monospace",
+                fontWeight: 700,
+                letterSpacing: ".3rem",
+                color: "inherit",
+                textDecoration: "none",
+              }} href="/"> The PodBlog </a>
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
               {page.map((page) => (
