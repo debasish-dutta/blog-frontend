@@ -37,7 +37,7 @@ const Blog = ({ darkMode }) => {
   //   .then((data) => console.log(data));
   // }, []);
 
-  const blogs = useSelector((state) => (state.posts ));
+  const blogs = useSelector((state) => ( state.posts ));
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getBlogPosts());

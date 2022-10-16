@@ -10,8 +10,8 @@ import { makeStyles } from "@mui/styles";
 import Topbar from "../components/Topbar";
 import Footer from "../components/Footer";
 import Poly from "../components/Poly";
-import SingleBlog from "../components/SingleBlog";
-import { getBlogPost } from "../redux/slice/BlogPostSlice";
+import SinglePodcast from "../components/SinglePodcast";
+import { getPodcast } from "../redux/slice/PodcastSlice";
 
 const useStyles = makeStyles(() => ({
       invert: {
@@ -26,21 +26,21 @@ const useStyles = makeStyles(() => ({
       }
     }));
 
-const SinglePost = ({ darkMode }) => {
+const SinglePodcastPost = ({ darkMode }) => {
   const classes = useStyles();
     
 
     const dispatch = useDispatch();
-    const post = useSelector((state) => ( state.posts )).posts;
+    const podcast = useSelector((state) => ( state.podcasts )).podcasts;
     const { slug } = useParams();
     useEffect(() => {
       if(slug) {
-        dispatch(getBlogPost(slug));
+        dispatch(getPodcast(slug));
       }
     }, [slug]);
   
     console.log("aaa");
-    console.log( post );
+    console.log( podcast );
     console.log( slug );
 
     const darkTheme = createTheme({
@@ -56,17 +56,17 @@ const SinglePost = ({ darkMode }) => {
         <ThemeProvider theme={darkTheme}>
           <Topbar darkMode={darkMode} />
           <Divider sx={{ display: { xs: "none", md: "flex" }, bgcolor: "gray" }} />
-          <Poly darkMode={darkMode} title={post.title} />
+          <Poly darkMode={darkMode} title={podcast.title} />
           <Divider sx={{ display: { xs: "none", md: "flex" }, bgcolor: "gray" }} />
           <main container className={"darkMode" ? classes.invert : classes.default}>
             
 
-            <SingleBlog {...post}/>
-            <h3>{post.title}</h3>
+            <SinglePodcast {...podcast}/>
+            <h3>{podcast.title}</h3>
           </main>
           <Footer darkMode={darkMode} />
         </ThemeProvider>
       );
     };
     
-export default SinglePost;
+export default SinglePodcastPost;

@@ -15,7 +15,7 @@ const posts =
         ],
         "createdAt": "2022-10-10T",
         "_id": "6343f45cd7a23850ee3d16bb",
-        "__v": 0
+        "slug": "new-blog",
     };
 
 const SingleBlog = ({title, subtitle, content, image, tags, createdAt, _id}) => {

@@ -3,13 +3,13 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useEffect } from "react";
 import HomePage from "./pages/HomePage";
 import Blog from "./pages/blog";
-import SingleBlog from "./components/SingleBlog";
+import SinglePost from "./pages/singleBlog";
 import Podcast from "./pages/podcast";
+import SinglePodcastPost from "./pages/singlePodcast";
 import About from "./pages/about";
 import Contact from "./pages/contact";
 import Admin from "./pages/admin1";
 import NotFound from "./pages/notFound";
-
 
 function App() {
   const [darkMode, setDarkMode] = React.useState(() => {
@@ -26,8 +26,9 @@ function App() {
       <Routes>
       <Route path="/" element={<HomePage darkMode={darkMode} setDarkMode={setDarkMode} />}></Route>
       <Route path="/blog" element={<Blog darkMode={darkMode} setDarkMode={setDarkMode} />}></Route>
-      <Route path="/blog/:slug" element={<SingleBlog darkMode={darkMode} setDarkMode={setDarkMode} />}></Route>
+      <Route path="/blog/:slug" element={<SinglePost darkMode={darkMode} setDarkMode={setDarkMode} />}></Route>
       <Route path="/podcast" element={<Podcast darkMode={darkMode} setDarkMode={setDarkMode} />}></Route>
+      <Route path="/podcast/:slug" element={<SinglePodcastPost darkMode={darkMode} setDarkMode={setDarkMode} />}></Route>
       <Route path="/about" element={<About darkMode={darkMode} setDarkMode={setDarkMode} />}></Route>
       <Route path="/contact" element={<Contact darkMode={darkMode} setDarkMode={setDarkMode} />}></Route>
       <Route path="/admin" element={<Admin />}></Route>
