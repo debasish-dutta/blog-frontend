@@ -21,6 +21,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
+const title = "About Me";
 const About = ({ darkMode }) => {
   const classes = useStyles();
   const darkTheme = createTheme({
@@ -35,7 +36,7 @@ const About = ({ darkMode }) => {
     <ThemeProvider theme={darkTheme}>
       <Topbar darkMode={darkMode} />
       <Divider sx={{ display: { xs: "none", md: "flex" }, bgcolor: "gray" }} />
-      <Poly darkMode={darkMode} />
+      <Poly darkMode={darkMode} title={title} />
       <Divider sx={{ display: { xs: "none", md: "flex" }, bgcolor: "gray" }} />
       <Grid container className={"darkMode" ? classes.invert : classes.default}>
         <Grid

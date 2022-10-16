@@ -68,7 +68,7 @@ const useStyles = makeStyles(() => ({
         <ThemeProvider theme={darkTheme}>
           <Topbar darkMode={darkMode} />
           <Divider sx={{ display: { xs: "none", md: "flex" }, bgcolor: "gray" }} />
-          <Poly darkMode={darkMode} />
+          <Poly darkMode={darkMode} title={posts.title} />
           <Divider sx={{ display: { xs: "none", md: "flex" }, bgcolor: "gray" }} />
           <main container className={"darkMode" ? classes.invert : classes.default}>
             

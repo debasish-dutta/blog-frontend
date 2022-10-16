@@ -27,7 +27,7 @@ const useStyles = makeStyles(() => ({
 const HomePage = ({ darkMode }) => {
   // const posts = useSelector((state) => state.posts);
   // console.log({ posts });
-
+  const title = "The PodBlog";
   const classes = useStyles();
   const darkTheme = createTheme({
     palette: {
@@ -41,7 +41,7 @@ const HomePage = ({ darkMode }) => {
     <ThemeProvider theme={darkTheme}>
       <Topbar darkMode={darkMode} />
       <Divider sx={{ display: { xs: "none", md: "flex" }, bgcolor: "gray" }} />
-      <Poly darkMode={darkMode} />
+      <Poly darkMode={darkMode} title={title} />
       <Divider sx={{ display: { xs: "none", md: "flex" }, bgcolor: "gray" }} />
       <Grid container className={"darkMode" ? classes.invert : classes.default}>
           <Container maxWidth="1">Top Blog Posts</Container>

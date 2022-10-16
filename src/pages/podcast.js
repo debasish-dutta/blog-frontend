@@ -26,6 +26,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
+const title = "All Podcasts";
 const Podcast = ({ darkMode }) => {
   const classes = useStyles();
   // const [posts, setPost] = useState();
@@ -56,7 +57,7 @@ const Podcast = ({ darkMode }) => {
     <ThemeProvider theme={darkTheme}>
       <Topbar darkMode={darkMode} />
       <Divider sx={{ display: { xs: "none", md: "flex" }, bgcolor: "gray" }} />
-      <Poly darkMode={darkMode} />
+      <Poly darkMode={darkMode} title={title} />
       <Divider sx={{ display: { xs: "none", md: "flex" }, bgcolor: "gray" }} />
       <Grid container className={"darkMode" ? classes.invert : classes.default}>
 

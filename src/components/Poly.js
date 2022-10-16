@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Grid, Typography, ThemeProvider, createTheme } from "@mui/material";
 
-const Poly = ({ darkMode, setDarkMode }) => {
+const Poly = ({ darkMode, setDarkMode, title }) => {
     const darkTheme = createTheme({
       palette: {
         mode: darkMode ? "dark" : "light",
@@ -31,7 +31,7 @@ return (
               fontSize: { xs: "2rem", md: "4rem" }
             }}
           >
-            The PodBlog
+            {title}
           </Typography>
         </Grid>
       </Box>

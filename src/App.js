@@ -7,7 +7,7 @@ import SingleBlog from "./components/SingleBlog";
 import Podcast from "./pages/podcast";
 import About from "./pages/about";
 import Contact from "./pages/contact";
-import Admin from "./pages/admin";
+import Admin from "./pages/admin1";
 import NotFound from "./pages/notFound";
 
 
@@ -31,7 +31,7 @@ function App() {
       <Route path="/about" element={<About darkMode={darkMode} setDarkMode={setDarkMode} />}></Route>
       <Route path="/contact" element={<Contact darkMode={darkMode} setDarkMode={setDarkMode} />}></Route>
       <Route path="/admin" element={<Admin />}></Route>
-      <Route path="*" element={<NotFound />} />
+      <Route path="*" element={<NotFound darkMode={darkMode} setDarkMode={setDarkMode} />}></Route>
       </Routes>
     </BrowserRouter>
   );
